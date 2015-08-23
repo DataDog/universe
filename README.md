@@ -1,5 +1,7 @@
 # Mesosphere Universe [![Build Status](https://teamcity.mesosphere.io/guestAuth/app/rest/builds/buildType:(id:Oss_Universe_Ci)/statusIcon)](https://teamcity.mesosphere.io/viewType.html?buildTypeId=Oss_Universe_Ci&guest=1)
 
+[![Join the chat at https://gitter.im/DataDog/universe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DataDog/universe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The Mesosphere Universe package repository.
 
 ## Package entries

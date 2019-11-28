@@ -3,22 +3,17 @@
     "container": {
         "type": "DOCKER",
         "docker": {
-            {{#datadog.use_agent_5}}
+            {{#datadog.use_agent_7}}
             "image": "{{resource.assets.container.docker.agent5}}",
-            {{/datadog.use_agent_5}}
-            {{^datadog.use_agent_5}}
+            {{/datadog.use_agent_7}}
+            {{^datadog.use_agent_7}}
             "image": "{{resource.assets.container.docker.agent6}}",
             "forcePullImage": true,
-            {{/datadog.use_agent_5}}
+            {{/datadog.use_agent_7}}
             "parameters": [
                 {
                     "key": "env", "value": "DD_API_KEY={{datadog.api_key}}"
                 },
-                {{#datadog.use_agent_5}}
-                {
-                    "key": "env", "value": "SD_BACKEND=docker"
-                },
-                {{/datadog.use_agent_5}}
                 {{#datadog.dogstatsd.non_local_traffic}}
                 {
                     "key": "env", "value": "DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true"

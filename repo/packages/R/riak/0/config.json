@@ -3,7 +3,7 @@
       "properties": {
         "riak": {
           "type": "object",
-          "depscription": "Riak Mesos Framework specific properties",
+          "description": "Riak Mesos Framework specific properties",
           "properties": {
             "master": {
               "type": "string",
@@ -42,11 +42,6 @@
               "description": "Framework Role.",
               "default": "*"
             },
-            "url": {
-                "type": "string",
-                "description": "Riak Mesos Framework download URL.",
-                "default": "http://riak-tools.s3.amazonaws.com/riak-mesos/coreos/riak_mesos_linux_amd64_0.1.0.tar.gz"
-            },
             "auth-provider": {
                 "type": "string",
                 "description": "Authentication provider to use, default is SASL that supports mechanisms.",
@@ -77,6 +72,32 @@
                 "description": "Memory requirements",
                 "default": 2048
             },
+            "node": {
+                "type": "object",
+                "description": "Resource Requirements Per Riak Node",
+                "properties": {
+                    "cpus": {
+                        "type": "number",
+                        "description": "Per Node CPU requirements",
+                        "default": 1.0
+                    },
+                    "mem": {
+                        "type": "number",
+                        "description": "Per Node Memory requirements",
+                        "default": 8000
+                    },
+                    "disk": {
+                        "type": "number",
+                        "description": "Per Node Disk requirements",
+                        "default": 20000
+                    }
+                }
+            },
+            "super-chroot":{
+                "type": "string",
+                "description": "When this is false, use the default chroot.",
+                "default": "true"
+            },
             "healthcheck-grace-period-seconds": {
                 "type": "number",
                 "description": "Memory requirements",
@@ -103,7 +124,7 @@
             "instances",
             "cpus",
             "mem",
-            "url",
+            "super-chroot",
             "master",
             "zk",
             "user",

@@ -31,6 +31,23 @@
               "minimum": 0,
               "default": 604800
             },
+            "cpus": {
+              "default": 0.5,
+              "description": "CPU shares to allocate to each Cassandra framework instance.",
+              "type": "number"
+            },
+            "mem": {
+              "default": 512.0,
+              "description": "Memory (MB) to allocate to each Cassandra framework instance.",
+              "minimum": 512.0,
+              "type": "number"
+            },
+            "instances": {
+              "default": 1,
+              "description": "Number of Cassandra framework instances to run.",
+              "minimum": 0,
+              "type": "integer"
+            },            
             "role": {
               "description": "Mesos role for this framework.",
               "type": "string",
@@ -61,6 +78,9 @@
             }
           },
           "required": [
+            "instances",
+            "cpus",
+            "mem",
             "failover-timeout-seconds",
             "role",
             "authentication"
@@ -143,6 +163,48 @@
             "cpus",
             "mem",
             "disk"
+          ]
+        },
+        "dc": {
+          "description": "Cassandra multi Datacenter Configuration Properties",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default-dc": {
+              "description": "Default value to be set for dc name in the GossipingPropertyFileSnitch",
+              "type": "string",
+              "default": "DC1"
+            },
+            "default-rack": {
+              "description": "Default value to be set for rack name in the GossipingPropertyFileSnitch",
+              "type": "string",
+              "default": "RAC1"
+            },
+            "external-dcs": {
+              "description": "Name and URL for another instance of Cassandra DCOS Service",
+              "type": "array",
+              "additionalProperties": false,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ]
+              }
+            }
+          },
+          "required": [
+            "default-dc",
+            "default-rack"
           ]
         }
       },
